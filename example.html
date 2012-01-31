@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mandatory jQuery Plugin</title>
+<meta name="description" content="Example HTML page for the jQuery plugin Mandatory">
+<meta name="author" content="Cloud9">
+<link rel="stylesheet" href="example.css">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="prettify/prettify.css">
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+
+<div id="container">
+
+<div id="col1">
+
+    <form id="example-form">
+    
+    <h1>Mandatory jQuery Plugin</h1>
+    <h2>Simple HTML form validation</h2>
+    
+    <label for="name">Name</label>
+    <input name="name" type="text" id="name">
+    
+    <label for="name">E-mail</label>
+    <input name="email" type="text" id="email">
+    
+    <label for="message">Message</label>
+    <textarea name="message" id="message"></textarea>
+    
+    <label for="topic">Topic</label>
+    <select name="topic" id="topic">
+        <option>Choose a topic for this e-mail</option>
+        <option value="ideas">Ideas for improvement</option>
+    	<option value="bugs">Bugs</option>
+    	<option value="questions">Questions</option>
+    	<option value="other">Other</option>
+    </select>
+    
+    <fieldset>
+    	<legend>Checkboxes</legend>
+    	<label for="regularCheckbox">
+    		<input type="checkbox" name="input" id="regularCheckbox" value="checkbox 1">
+    		<span>Regular Checkbox</span>
+    	</label>
+    	<label for="secondRegularCheckbox">
+    		<input type="checkbox" name="input" id="secondRegularCheckbox" value="checkbox 2">
+    		<span>Regular Checkbox</span>
+    	</label>
+    </fieldset>
+    
+    <fieldset>
+    	<legend>Radio Buttons</legend>
+    	<label for="regularRadio">
+    		<input type="radio" name="radios" id="regularRadio" value="radio 1">
+    		<span>Regular Radio</span>
+    	</label>
+    	<label for="secondRegularRadio">
+    		<input type="radio" name="radios" id="secondRegularRadio" value="radio 2">
+    		<span>Regular Radio</span>
+    	</label>
+    </fieldset>
+    
+    <button type="submit">Submit Form</button>
+    
+    </form>
+
+</div>
+<div id="col2">
+
+<h3>Example Mark-up</h3>
+
+<pre class="prettyprint">
+&lt;form id=&quot;example-form&quot;&gt;
+    
+    &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;
+    &lt;input name=&quot;name&quot; type=&quot;text&quot; id=&quot;name&quot;&gt;
+    
+    &lt;label for=&quot;name&quot;&gt;E-mail&lt;/label&gt;
+    &lt;input name=&quot;email&quot; type=&quot;text&quot; id=&quot;email&quot;&gt;
+    
+    &lt;label for=&quot;message&quot;&gt;Message&lt;/label&gt;
+    &lt;textarea name=&quot;message&quot; id=&quot;message&quot;&gt;&lt;/textarea&gt;
+
+&lt;/form&gt;
+
+&lt;script&gt;
+$(document).ready(function(){
+    $(&#039;#example-form&#039;).Mandy(&#039;email&#039;,&#039;message&#039;);
+});
+&lt;/script&gt;
+</pre>
+
+<h3>Call Mandy yourself</h3>
+
+<div id="call-mandy">
+<pre class="prettyprint">&lt;script&gt;
+$('form').Mandy(<input id="mandy-arguments" type="text">);
+&lt;/script&gt;
+<button id="run-mandy">Run</button>
+</pre></div>
+
+</div>
+
+<div class="clear"></div>
+
+</div>
+
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="jquery.mandatory.js"></script>
+<script src="prettify/prettify.js"></script>
+<script>
+$(document).ready(function(){
+    
+    //console.log('Basic Example - Mandy()');
+    //console.log('=======================');
+    $('#example-form').Mandy({debug:false,fields:['name']});
+    
+    //console.log('Select Specific Fields - Mandy("email","message")');
+    //console.log('=================================================');
+    //$('#example-form').Mandy('email','message');
+    
+    //console.log('Select Specific Fields as a string - Mandy("name,email")');
+    //console.log('========================================================');
+    //$('#example-form').Mandy('name,email');
+    
+    //console.log('Select tags - Mandy("input","textarea")');
+    //console.log('=======================================');
+    //$('#example-form').Mandy('input,email');
+    
+    //console.log('Use Mandy\'s logging system - Mandy.log("A simple console log")');
+    //console.log('===============================================================');
+    //$('#example-form').Mandy.log('A simple console log');
+    
+    //console.log('Use Mandy\'s logging system - Mandy.info("A simple console info log")');
+    //console.log('=====================================================================');
+    //$('#example-form').Mandy.info('A simple console info log');
+    
+    //console.log('Use Mandy\'s logging system - Mandy.warn("Watch out for that water tower!")');
+    //console.log('==============================================================================');
+    //$('#example-form').Mandy.warn('Watch out for that water tower!');
+    
+    console.log('Use Mandy\'s logging system - Mandy.error("Y U No Input?")');
+    console.log('==========================================================');
+    $('#example-form').Mandy.error('Y U No Input?'); 
+    
+    prettyPrint();
+    $('#col2 .prettyprint').find('*').addClass('monospace');
+    //var my_mandy = {};
+    
+    /*$('#run-mandy').click(function(){
+        var args = $('#mandy-arguments').val();
+        console.log('New Mandy args: '+args);
+        my_mandy = $('#example-form').Mandy(args);
+    });*/
+});
+</script>
+</body>
+</html>
